@@ -64,7 +64,7 @@ namespace BaGetter.Core
                 query = query.Where(p => p.Listed);
             }
 
-            return (await query.ToListAsync(cancellationToken)).AsReadOnly();
+            return (await query.AsSingleQuery().ToListAsync(cancellationToken)).AsReadOnly();
         }
 
         public Task<Package> FindOrNullAsync(
@@ -84,7 +84,7 @@ namespace BaGetter.Core
                 query = query.Where(p => p.Listed);
             }
 
-            return query.FirstOrDefaultAsync(cancellationToken);
+            return query.AsSingleQuery().FirstOrDefaultAsync(cancellationToken);
         }
 
         public Task<bool> UnlistPackageAsync(string id, NuGetVersion version, CancellationToken cancellationToken)
@@ -109,6 +109,7 @@ namespace BaGetter.Core
                 .Where(p => p.NormalizedVersionString == version.ToNormalizedString())
                 .Include(p => p.Dependencies)
                 .Include(p => p.TargetFrameworks)
+                .AsSingleQuery()
                 .FirstOrDefaultAsync(cancellationToken);
 
             if (package == null)
@@ -131,7 +132,7 @@ namespace BaGetter.Core
             var package = await _context.Packages
                 .Where(p => p.Id == id)
                 .Where(p => p.NormalizedVersionString == version.ToNormalizedString())
-                .FirstOrDefaultAsync();
+                .FirstOrDefaultAsync(cancellationToken);
 
             if (package != null)
             {

@@ -2,23 +2,28 @@
 
   <!-- Package properties -->
   <PropertyGroup>
-    <Authors>Loic Sharma</Authors>
-    <Copyright>Copyright (c) Loic Sharma 2021</Copyright>
+    <Authors>Community https://github.com/bagetter/BaGetter; Loic Sharma</Authors>
+    <Copyright>Copyright (c) BaGetter 2023</Copyright>
     <Product>BaGetter</Product>
 
     <PackageIcon>packageIcon.png</PackageIcon>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageVersion Condition="'$(PackageVersion)' == ''">0.1.0-prerelease</PackageVersion>
-    <PackageProjectUrl>https://loic-sharma.github.io/BaGet/</PackageProjectUrl>
+    <PackageProjectUrl>https://www.bagetter.com</PackageProjectUrl>
   </PropertyGroup>
 
   <!-- Compiler properties -->
   <PropertyGroup>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <LangVersion>7.2</LangVersion>
+    <LangVersion>latest</LangVersion>
 
     <!-- Don't warn if there are missing XMl comment for publicly visible type or member-->
     <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
+
+  <!-- .NET source code analysis https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/overview -->
+  <PropertyGroup>
+    <AnalysisLevel>latest-Minimum</AnalysisLevel>
   </PropertyGroup>
 
   <!-- Debugging properties -->

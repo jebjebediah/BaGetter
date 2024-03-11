@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net6.0</TargetFrameworks>
-
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
     <PackageTags>NuGet</PackageTags>
     <Description>The libraries to host BaGetter on SQLite.</Description>
   </PropertyGroup>
